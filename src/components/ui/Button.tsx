@@ -1,21 +1,48 @@
-import {FC} from 'react';
-import { cva } from 'class-variance-authority';
+import {ButtonHTMLAttributes, FC, forwardRef} from 'react';
+import { cn } from '@/libs/utils';
+import { cva, VariantProps } from 'class-variance-authority';
+import { Loader2 } from 'lucide-react';
 interface ButtonProps  {
   
 };
-const Variants = cva('active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-color focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 dark:focus-slate-400 disabled:pointer-event-none dark:focus:ring-offset-slate-900',{
+export const Variants = cva('active:scale-95 inline-flex items-center justify-center rounded-md text-sm font-medium transition-color focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 dark:focus-slate-400 disabled:pointer-event-none dark:focus:ring-offset-slate-900',{
     variants:{
         variant:{
-            default:''
+            default:'bg-slate-900 text-white hover:bg-slate-800 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-slate-100', 
+            outline: 'bg-slate-900 text-white hover:slate-900 dark:bg-slate-200 dark:text-slate-900 dark:hover:bg-slate-100 border border-slate-200 hover:border-slate-100 dark:border-slate-700', 
+            ghost : 'bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-400  data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent ', 
+            link: 'bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent '
+        }, 
+        size : {
+          default : 'h-10 py-2 px-4', 
+          sm: 'h-9 px-2 rounded-md', 
+          lg: 'h-11 px-8 rounded-md'
         }
+    }, 
+    defaultVariants: {
+      variant : 'default', 
+      size:  'default'
     }
 })
-const Button:FC<ButtonProps> = ({  }) => {
-  return (
-    <div>
-      ButtonProps
-    </div>
-  );
-};
 
+
+interface ButtonProps 
+extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof Variants>{
+  isLoading?: boolean
+}
+
+const Button:FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>({
+  className, children , variant, isLoading,  size, ...props 
+},ref) => {
+  return <button className={cn(Variants({ variant, size, className }))}
+  ref={ref}
+  disabled={isLoading}
+  {...props}>
+    {isLoading ?  <Loader2  className='mr-2 h-4 w-4 animate-spin'/> : null }
+    {childen}
+  </button>
+}
+
+
+Button.displayName = 'Button'
 export default Button;
