@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.dark .text3d{
+    text-shadow: 6px 5px 6px #533519 ;
+}
+
+ .text3d{
+    text-shadow: none ;
+}
