@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { Variants } from '@/ui//Button';
 import SignInButton from '@/ui/SignInButton';
 import SignOutButton from '@/ui/SignOutButton';
+import ThemeToggle from './ThemeToggle';
 
 
 const Navbar = async () => {
@@ -13,10 +14,10 @@ const Navbar = async () => {
             <div className="container max-w-7xl mx-auto w-full flex justify-between items-center">
                 <Link href='/' className={Variants({ variant: 'link' })}>Text Similarity 1.0</Link>
                 <div className="md:hidden">
-                    {/* <ThemeToggle /> */}
+                     <ThemeToggle /> 
                 </div>
                 <div className="hidden md:flex gap-4">
-                    {/* <ThemeToggle /> */}
+                    <ThemeToggle /> 
                     <Link href='/documentation' className={Variants({ variant: 'ghost' })}>Documentation</Link>
                     {session?<>
                         <Link href='/dashboard' className={Variants({variant:'link'})}>Dashboard</Link> <SignOutButton/>
