@@ -13,9 +13,9 @@ export default function RootLayout({
     <html lang="en" className={classNameOptimization('bg-white text-slate-900 antialiased',inter.className)}>
       <body className='min-h-screen bg-slate-50 dark:bg-slate-900 antialiased'>
         <Providers>
-
-        {children}
+       {/* @ts-expect-error Server Component */}
         <Navbar/>
+        <main>{children}</main>
         </Providers>
         <div className='h-40 md:hidden'/>
         </body>
