@@ -30,16 +30,24 @@ export const Variants = cva(
         },
     }
 )
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement>, VariantProps<typeof Variants> {
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement>, VariantProps<typeof Variants>  {
     isLoading?: boolean
 };
-const Button: FC<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(({ className,children,variant,isLoading,size,...props },ref) => {
-    return (
-        <button className={classNameOptimization(Variants({variant,size,className}))} ref={ref} disabled={isLoading} {...props}>
-            {isLoading? <Loader2 className='mr-2 h-4 w-4 animate-spin'/>:null}
-            {children}
+
+const Button =forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ className, children, variant, isLoading, size, ...props }, ref) => {
+      return (
+        <button
+          className={classNameOptimization(Variants({ variant, size, className }))}
+          ref={ref}
+          disabled={isLoading}
+          {...props}>
+          {isLoading ? <Loader2 className='mr-2 h-4 w-4 animate-spin' /> : null}
+          {children}
         </button>
-    );
-})
-Button.displayName = "Button"
-export default Button;
+      )
+    }
+  )
+  Button.displayName = 'Button'
+  
+  export { Button }
