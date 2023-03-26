@@ -1,8 +1,9 @@
 import { classNameOptimization } from '@/libs/utils/utils'
 import '@/styles/globals.css'
-import Providers from '@/components/ui/Providers'
+import Providers from '@/components/Providers'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/ui/Navbar'
+import { Toaster } from '@/components/ui/Toast'
 const inter = Inter({subsets:['latin']})
 export default function RootLayout({
   children,
@@ -13,7 +14,9 @@ export default function RootLayout({
     <html lang="en" className={classNameOptimization('bg-white text-slate-900 antialiased',inter.className)}>
       <body className='min-h-screen bg-slate-50 dark:bg-slate-900 antialiased'>
         <Providers>
+       <Toaster position='bottom-right'/>
        {/* @ts-expect-error Server Component */}
+
         <Navbar/>
         <main>{children}</main>
         </Providers>
