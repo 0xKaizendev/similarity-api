@@ -24,7 +24,10 @@ const Code: FC<CodeProps> = ({code, show, language, animated, animationDelay} : 
       if(show && animated) {
         let i = 0 
 
-        
+        // animation sur le texte  
+        /**
+         *  Le texte est récupéré de helpers/document-code  puis set lettre par lettre puis affiché pour faire l'animation typed 
+         */
         setTimeout(() => {
           const intervalId = setInterval(() => {
             setText(code.slice(0, i))
