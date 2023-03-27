@@ -1,6 +1,7 @@
 
 import { FC } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/ui/Tabs";
+import SimpleBar from 'simplebar-react'
 interface DocumentationProps {
     
 }
@@ -17,11 +18,11 @@ const DocumentationTabs: FC<DocumentationProps> = () => {
                 </TabsTrigger>
 
                 <TabsContent value='nodejs'>
-
+                    {/*<SimpleBar></SimpleBar>*/}
                 </TabsContent>
 
                 <TabsContent value='python'>
-                    
+
                 </TabsContent>
             </TabsList>
         </Tabs>
