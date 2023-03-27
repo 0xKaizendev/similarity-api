@@ -1,9 +1,10 @@
-
+'use client'
 import { FC } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/ui/Tabs";
 import SimpleBar from 'simplebar-react'
 import  Code  from "@/components/Code";
 import { nodejs, python } from "@/helpers/documentation-code";
+import 'simplebar-react/dist/simplebar.min.css'
 interface DocumentationProps {
     
 }
@@ -21,13 +22,18 @@ const DocumentationTabs: FC<DocumentationProps> = () => {
             </TabsList>
 
                 <TabsContent value='nodejs'>
-                    {/*<SimpleBar></SimpleBar>*/}
+                    <SimpleBar>
+                        <Code language="javascript" code={nodejs} animated={true} animationDelay={200} show />
+                    </SimpleBar>
 
-                    <Code language="javascript" code={nodejs} animated={true} animationDelay={200} show />
+                    
                 </TabsContent>
 
                 <TabsContent value='python'>
-                    <Code language="python" code={python} animated={true} animationDelay={150} show/>
+                    <SimpleBar>
+                        <Code language="python" code={python} animated={true} animationDelay={150} show/>
+                    </SimpleBar>
+                    
                 </TabsContent>
            
         </Tabs>
