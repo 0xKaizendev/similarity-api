@@ -11,12 +11,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={classNameOptimization('bg-white text-slate-900 antialiased',inter.className)}>
+    <html lang="en" >
       <body className='min-h-screen bg-slate-50 dark:bg-slate-900 antialiased'>
         <Providers>
        <Toaster position='bottom-right'/>
        {/* @ts-expect-error Server Component */}
-
         <Navbar/>
         <main>{children}</main>
         </Providers>
