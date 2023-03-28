@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "Similarity API | Home",
   description: "Free & Open-source text similarity API"
 }
