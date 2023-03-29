@@ -23,7 +23,7 @@ const Navbar = async () => {
                         <Link href='/dashboard' className={Variants({variant:'link'})}>Dashboard</Link> <SignOutButton/>
                     </>:(<SignInButton/>)}
                 </div>
-            </div>
+            </div>  
         </div>
     );
 };

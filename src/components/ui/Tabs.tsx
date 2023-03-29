@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import * as TabsPrimitive from '@radix-ui/react-tabs' 
+import * as TabsPrimitive from '@radix-ui/react-tabs'
 
 import { classNameOptimization } from '@/libs/utils/utils'
 
@@ -9,21 +9,21 @@ const Tabs = TabsPrimitive.Root
 
 /**
  *  TabsList const for element ( line content) of the various table (node / pyhon )
- */
+-.*/
 
-const TabsList  = React.forwardRef<React.ElementRef<typeof TabsPrimitive.List>,
-                            React.ComponentPropsWithRef<typeof TabsPrimitive.List>
-                            >(({className, 
-                            ...props}, ref) => (
-                                <TabsPrimitive.List
-                                    ref={ref}
-                                    className={classNameOptimization('inline-flex items-center justify-center rounded-md bg-slate-100 p-1 dark:bg-slate-800', 
-                                    className)}
-                                    {...props}
+const TabsList = React.forwardRef<React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithRef<typeof TabsPrimitive.List>
+>(({ className,
+  ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    className={classNameOptimization('inline-flex items-center justify-center rounded-md bg-slate-100 p-1 dark:bg-slate-800',
+      className)}
+    {...props}
 
-                                />     
-    
-                            ))
+  />
+
+))
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
@@ -56,4 +56,4 @@ const TabsContent = React.forwardRef<
 ))
 TabsContent.displayName = TabsPrimitive.Content.displayName
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsList, TabsTrigger, TabsContent } 
