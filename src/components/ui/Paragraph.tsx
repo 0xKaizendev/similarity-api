@@ -1,6 +1,6 @@
 import React,{ FC, HTMLAttributes,forwardRef } from 'react';
 import { cva, VariantProps } from "class-variance-authority";
-import { classNameOptimization } from '@/libs/utils/utils';
+import { classNameOptimization } from '@/libs/utils';
 // Cree des variants de paragraphes avec un default
 const Variants = cva("max-w-prose text-slate-700 dark:text-slate-300 mb-2 text-center", {
     variants: {

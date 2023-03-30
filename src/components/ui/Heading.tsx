@@ -1,6 +1,6 @@
 import {FC, HTMLAttributes,forwardRef} from 'react';
 import { cva, VariantProps } from "class-variance-authority";
-import { classNameOptimization } from '@/libs/utils/utils';
+import { classNameOptimization } from '@/libs/utils';
 
 // Differents Variant de paragraph selon la taille de l'ecran
 const Variants = cva("dark:text-white text-center lg:text-left font-extrabold leading-tight tracking-tighter", {

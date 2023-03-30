@@ -1,3 +1,3 @@
 import NextAuth from 'next-auth' 
-import {authOptions} from '@/libs/utils/auth'
+import {authOptions} from '@/libs/auth'
 export default NextAuth(authOptions)

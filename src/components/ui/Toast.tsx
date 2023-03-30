@@ -1,6 +1,6 @@
 'use client'
 import { Icons } from  '@/components/Icons'
-import { classNameOptimization } from '@/libs/utils/utils'
+import { classNameOptimization } from '@/libs/utils'
 import * as React from 'react'
 import hotToast, { Toaster as HotToaster } from 'react-hot-toast'
 export const Toaster = HotToaster
