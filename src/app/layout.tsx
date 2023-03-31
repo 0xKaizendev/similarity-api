@@ -1,4 +1,4 @@
-import { classNameOptimization } from '@/libs/utils/utils'
+import { classNameOptimization } from '@/libs/utils'
 import '@/styles/globals.css'
 import Providers from '@/components/Providers'
 import { Inter } from 'next/font/google'

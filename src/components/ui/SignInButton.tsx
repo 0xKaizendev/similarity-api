@@ -10,9 +10,10 @@ interface SignInButtonProps {
 
 const SignInButton: FC<SignInButtonProps> = ({ }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const signInWithGit = async () => {
+    const signInWithGoogle = async () => {
         try {   
-            await signIn()
+            setIsLoading(false)
+            await signIn('google')
 
         } catch (error) {
             toast({
@@ -22,7 +23,7 @@ const SignInButton: FC<SignInButtonProps> = ({ }) => {
             })
         }
     }
-    return <Button onClick={signInWithGit} isLoading={isLoading}  >
+    return <Button onClick={signInWithGoogle} isLoading={isLoading}  >
                     Sign in
             </Button>
 

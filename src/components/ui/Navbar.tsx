@@ -1,6 +1,5 @@
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
-import { FC } from 'react';
 import { Variants } from '@/ui//Button';
 import SignInButton from '@/ui/SignInButton';
 import SignOutButton from '@/ui/SignOutButton';

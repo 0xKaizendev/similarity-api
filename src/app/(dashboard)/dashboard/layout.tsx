@@ -1,4 +1,3 @@
-import { FC } from "react";
 import '@/styles/globals.css' 
 interface LayoutProps {
     
