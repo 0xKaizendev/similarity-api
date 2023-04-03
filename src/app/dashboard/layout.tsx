@@ -6,7 +6,7 @@ interface LayoutProps {
 function Layout  ({children } : {children : React.ReactNode}) 
 {
     return ( 
-        <section className="pt-12">
+        <section className="pt-22">
             {children}
         </section>
      );

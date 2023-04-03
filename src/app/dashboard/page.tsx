@@ -10,7 +10,7 @@ import RequestApiKey from "@/components/ui/RequestApiKey";
     title:'Similarity API | Dashboard',
     description:'Similarity API'
  }
-const Dashbord =async () => {
+const Dashboard =async () => {
     const session = await getServerSession(authOptions)
     if(!session ) return notFound()
     const apiKey = await db.apiKey.findFirst({
@@ -23,4 +23,4 @@ const Dashbord =async () => {
      );
 }
  
-export default Dashbord;
+export default Dashboard;
