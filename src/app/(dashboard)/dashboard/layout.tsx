@@ -1,15 +1,11 @@
-import '@/styles/globals.css' 
-interface LayoutProps {
-    
-}
- 
-function Layout  ({children } : {children : React.ReactNode}) 
+import '@/styles/globals.css'
+
+export default function RootLayout  ({children } : {children : React.ReactNode}) 
 {
     return ( 
-        <section className="pt-22">
+        <section className="pt-12">
             {children}
         </section>
      );
 }
  
-export default Layout;

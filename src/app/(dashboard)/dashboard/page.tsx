@@ -18,7 +18,9 @@ const Dashboard =async () => {
     })
     return ( 
         <div className="max-w-7xl mx-auto mt-15">
-           {apiKey? <ApiDashboard/>:<RequestApiKey/> }
+           {apiKey? 
+              // @ts-expect-error 
+           <ApiDashboard/>:<RequestApiKey/> }
         </div> 
      );
 }
