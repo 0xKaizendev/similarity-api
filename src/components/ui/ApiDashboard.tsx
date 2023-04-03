@@ -49,6 +49,11 @@ const ApiDashboard = async ({}) => {
       <div className="flex justify-center">
           <Input className=" truncate w-[460px]" readOnly value={activeKey.key} />
         </div>
+
+        <Paragraph className="text-center md:text-left mt-4 -mb-4">
+           Your  API  hystory
+        </Paragraph>
+        
     </div>
   );
 };
