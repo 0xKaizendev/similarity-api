@@ -40,6 +40,27 @@ const ApiKeyOptions : FC<ApiKeyOptionsProps> = ({ apiKeyId, apiKeyKey } ) => {
         }
     }
 
+    // revoke current API Key 
+
+    const revokeCurrentApiKey = async () => {
+        setIsRevoking(true) 
+
+        try {
+            await revokeApiKey({keyId : apiKeyId})
+            router.refresh()
+
+        } catch (error) {
+            toast({
+                title : "Error occurs while revoking API Key" , 
+                message:  "Please try again later ",
+                type: "error"
+            })
+        } finally {
+            setIsRevoking(false);
+        }
+
+    }
+
 
     return (
         <DropdownMenu>
@@ -72,10 +93,10 @@ const ApiKeyOptions : FC<ApiKeyOptionsProps> = ({ apiKeyId, apiKeyKey } ) => {
                 }}>
                     Copy
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={createNewApiKey}>
                     Create new Key
                 </DropdownMenuItem>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={revokeCurrentApiKey}>
                      Revoke Key
                 </DropdownMenuItem>
             </DropdownMenuContent>
