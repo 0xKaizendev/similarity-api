@@ -7,6 +7,7 @@ import  Heading  from '@/components/ui/Heading';
 import Paragraph from "./Paragraph";
 import { Input } from "./Input";
 import Table from "./Table";
+import ApiKeyOptions from "../ApiKeyOptions";
 
 const ApiDashboard = async ({}) => {
   const user = await getServerSession(authOptions) ; 
@@ -49,6 +50,7 @@ const ApiDashboard = async ({}) => {
       </div>
       <div className="flex justify-center">
           <Input className=" truncate w-fit" readOnly value={activeKey.key} />
+          <ApiKeyOptions apiKeyId={activeKey.id} apiKeyKey={activeKey.key} />
         </div>
 
         <Paragraph className="text-center md:text-left mt-4 -mb-4">
