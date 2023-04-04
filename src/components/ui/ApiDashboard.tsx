@@ -6,6 +6,7 @@ import {formatDistance} from 'date-fns'
 import  Heading  from '@/components/ui/Heading';
 import Paragraph from "./Paragraph";
 import { Input } from "./Input";
+import Table from "./Table";
 
 const ApiDashboard = async ({}) => {
   const user = await getServerSession(authOptions) ; 
@@ -20,11 +21,11 @@ const ApiDashboard = async ({}) => {
     where: { userId : user.user.id } 
   })
 
-  const activeKey = apiKeys.find((key) => key.enabled)
+  const  activeKey = apiKeys.find((key) => key.enabled)
 
   if(!activeKey) 
   return notFound() ; 
-
+ 
   const userRequests = await db.apiRequest.findMany({
     where : {
       apiKeyId : {
@@ -41,19 +42,19 @@ const ApiDashboard = async ({}) => {
   return (
     <div className="container flex flex-col gap-6 mt-12">
       <Heading>
-         Welcome back Mr.  { user.user.name }
+         Welcome back  { user.user.name }
       </Heading>
       <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start items-center ">
         <Paragraph>Your API key : </Paragraph>
       </div>
       <div className="flex justify-center">
-          <Input className=" truncate w-[460px]" readOnly value={activeKey.key} />
+          <Input className=" truncate w-fit" readOnly value={activeKey.key} />
         </div>
 
         <Paragraph className="text-center md:text-left mt-4 -mb-4">
            Your  API  hystory
         </Paragraph>
-        
+        <Table userRequest={serializableRequests}/>
     </div>
   );
 };

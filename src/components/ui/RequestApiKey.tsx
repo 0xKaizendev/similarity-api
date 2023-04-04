@@ -17,7 +17,7 @@ const RequestApiKey: FC = ({ }) => {
         setIsCreating(true)
         try {
             const newApiKey = await createKey()
-            setApiKey(newApiKey)
+            setApiKey(newApiKey.key)
         } catch (error) {
             if (error instanceof Error) {
                 toast({
