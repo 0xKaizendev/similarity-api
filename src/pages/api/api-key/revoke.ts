@@ -48,6 +48,8 @@ const handler = async (req:  NextApiRequest, res: NextApiResponse <RevokeApiData
                 success : false 
             })
         }
+
+        return res.status(500).json({error :  "Internal Server Error" , success : false})
     }
 
 
