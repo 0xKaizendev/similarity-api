@@ -5,6 +5,8 @@ import { openai } from "@/libs/openai";
 import { NextApiRequest, NextApiResponse } from "next";
 import { text } from "stream/consumers";
 import { z } from "zod";
+import similarity from '@/helpers/cosineSimilarity' 
+
 const requestSchema = z.object({
   text1: z.string().max(2000),
   text2: z.string().max(2000),
@@ -41,6 +43,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
             return res.data.data[0].embedding 
         })
     )
+
+   const similarityResult  = similarity({text1 , text2})
+
+   const duration = new Date().getTime() - start.getTime() ; 
   } catch (error) {}
 };
 export default callWithMehods(["GET", "POST"], handler);

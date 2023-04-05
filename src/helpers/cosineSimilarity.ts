@@ -1,5 +1,5 @@
 
-/*
+
 const levenshteinDistance = ({text1 , text2} : {text1 : string , text2 : string}) => {
 
     if(text1.length === 0 )
@@ -53,7 +53,7 @@ const similarity = ({text1 , text2} : {text1 : string , text2: string}) => {
 }
 
 export default similarity ; 
-*/
+/*
 export const cosineSimilarity= (A:number[],B:number[])=>{
     var dotproduct = 0
     var mA = 0
@@ -69,3 +69,4 @@ export const cosineSimilarity= (A:number[],B:number[])=>{
     var similarity = dotproduct / (mA * mB) // here you needed extra brackets
     return similarity
 }
+*/
