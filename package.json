@@ -42,6 +42,8 @@
     "react-hot-toast": "^2.4.0",
     "sharp": "^0.31.3",
     "simplebar-react": "^3.2.1",
+    "sweetalert2": "^11.7.3",
+    "sweetalert2-react-content": "^5.0.7",
     "tailwind-merge": "^1.10.0",
     "zod": "^3.21.0"
   },
