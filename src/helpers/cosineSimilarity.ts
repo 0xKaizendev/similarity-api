@@ -1,72 +1,36 @@
-
-
-const levenshteinDistance = ({text1 , text2} : {text1 : string , text2 : string}) => {
-
-    if(text1.length === 0 )
-    {
-        return text2.length
+function levenshteinDistance(str1: string, str2: string): number {
+    const matrix = Array(str2.length + 1).fill(null).map(() =>
+      Array(str1.length + 1).fill(null)
+    );
+  
+    for (let i = 0; i <= str1.length; i += 1) {
+      matrix[0][i] = i;
     }
-
-    if(text2.length === 0)
-    return text1.length
-
-    let matrix : any = [] 
-
-    let i ; 
-
-    // disloquer chaque texte en grand tableau
-    for (let i = 0; i < text2.length; i++) {
-        matrix[i] = i ; 
+  
+    for (let j = 0; j <= str2.length; j += 1) {
+      matrix[j][0] = j;
     }
-
-    let j ; 
-    for ( j = 0; j < text1.length; j++) {
-       matrix[0][j] = j ; 
+  
+    for (let j = 1; j <= str2.length; j += 1) {
+      for (let i = 1; i <= str1.length; i += 1) {
+        const indicator = str1[i - 1] === str2[j - 1] ? 0 : 1;
+        matrix[j][i] = Math.min(
+          matrix[j][i - 1] + 1, // deletion
+          matrix[j - 1][i] + 1, // insertion
+          matrix[j - 1][i - 1] + indicator // substitution
+        );
+      }
     }
+  
+    return matrix[str2.length][str1.length];
+  }
+const similarity = ({ text1, text2 }: { text1: string; text2: string }) => {
+  const distance = levenshteinDistance( text1, text2 );
 
-    for ( i = 1; i < text2.length; i++) {
-        for ( j = 1; j < text1.length; j++) {
-            if(text2.charAt(i-1) == text1.charAt(j-1)) {
-                matrix[i][j] = matrix[i-1][j-1]
-            }else 
-            {
-                matrix[i][j] = Math.min(
-                    matrix[i-1][j-1] + 1 , 
-                    Math.min(matrix[i][j-1] +1 , 
-                        matrix[i-1][j] + 1 )
-                )
-            }
-        }
-        
-    }
+  const similarity =
+    (1 - distance / Math.max(text1.length, text2.length)) * 100;
 
-    return matrix[text2.length][text1.length]
-}
+  return similarity.toFixed(3) + "%";
+};
 
-const similarity = ({text1 , text2} : {text1 : string , text2: string}) => {
-
-    const distance = levenshteinDistance({text1, text2}) ; 
-
-    const similarity = (1 - distance / Math.max(text1.length , text2.length)) * 100 ; 
-
-    return similarity.toFixed(3) + "%" ; 
-}
-
-export default similarity ; 
-/*
-export const cosineSimilarity= (A:number[],B:number[])=>{
-    var dotproduct = 0
-    var mA = 0
-    var mB = 0
-    for (let i = 0; i < A.length; i++) {
-      // here you missed the i++
-      dotproduct += A[i] * B[i]
-      mA += A[i] * A[i]
-      mB += B[i] * B[i]
-    }
-    mA = Math.sqrt(mA)
-    mB = Math.sqrt(mB)
-    var similarity = dotproduct / (mA * mB) // here you needed extra brackets
-    return similarity
-}
-*/
+export default similarity;
