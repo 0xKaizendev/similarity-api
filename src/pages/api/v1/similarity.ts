@@ -1,5 +1,7 @@
 
+import similarity from "@/helpers/cosineSimilarity"
 import callWithMehods from "@/libs/api-middlewars/methods"
+import { db } from "@/libs/db"
 import { NextApiRequest, NextApiResponse } from "next"
 import { z } from "zod"
 
@@ -32,6 +34,18 @@ const handler = async (req : NextApiRequest , res: NextApiResponse) => {
 
     try {
         const {text1, text2} = parsed.data ; 
+
+        const validApiKey  = await db.apiKey.findFirst({
+            where:  {key : apiKey, enabled : true }
+        })
+
+        if(!validApiKey) {
+            return res.status(401).json({
+                error :  "Unauthorized action"
+            })
+        }
+
+        
 
     } catch (error) {
         if(error instanceof z.ZodError) {
