@@ -23,11 +23,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
   try {
     const {text1,text2}= requestSchema.parse(body)
-    const validApiKey = db.apiKey.findFirst({
+    const validApiKey = await db.apiKey.findFirst({
       where: {
         key: apiKey,
         enabled: true,
-      },
+      }
     });
     if (!validApiKey) { 
         return response.status(404).json({ error: "Invalid api key" });
@@ -47,6 +47,25 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
    const similarityResult  = similarity({text1 , text2})
 
    const duration = new Date().getTime() - start.getTime() ; 
+
+   // record request infos 
+
+   await db.apiRequest.create({
+    data : {
+        duration , 
+        method : request.method as string , 
+        path : request.url as string , 
+        status : 200 , 
+       apiKeyId: validApiKey.id , 
+       usedApiKey : validApiKey.key, 
+    }
+   })
+
+   return response.status(200).json({
+    success : true , 
+    
+   })
+
   } catch (error) {}
 };
 export default callWithMehods(["GET", "POST"], handler);
