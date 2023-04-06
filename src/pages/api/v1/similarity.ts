@@ -3,7 +3,6 @@ import callWithMehods from "@/libs/api-middlewars/methods";
 import { db } from "@/libs/db";
 import { openai } from "@/libs/openai";
 import { NextApiRequest, NextApiResponse } from "next";
-import { text } from "stream/consumers";
 import { z } from "zod";
 import similarity from '@/helpers/cosineSimilarity' 
 
@@ -32,22 +31,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     if (!validApiKey) { 
         return response.status(404).json({ error: "Invalid api key" });
     }
-
     const  start = new Date()
-    const embedding = await Promise.all(
-        [text1,text2].map( async text=>{
-            const res = await openai.createEmbedding({
-                model:'text-embedding-ada-002',
-                input:text
-            })
-            return res.data.data[0].embedding 
-        })
-    )
 
    const similarityResult  = similarity({text1 , text2})
 
    const duration = new Date().getTime() - start.getTime() ; 
-
    // record request infos 
 
    await db.apiRequest.create({
@@ -63,11 +51,17 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
    return response.status(200).json({
     success : true , 
-    text1 , 
-    text2 , 
-    similarityResult 
+    text1,
+    text2,
+    similarityResult
    })
 
-  } catch (error) {}
+  } catch (error:any) {
+    if (error instanceof z.ZodError) {
+      return response.status(400).json({ error: error.issues })
+    }
+    console.log(error)
+    return response.status(500).json({ error: error.message })
+  }
 };
 export default callWithMehods(["GET", "POST"], handler);
