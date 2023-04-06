@@ -49,7 +49,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isConnected }) => {
                 </DropdownMenuItem>
                 <DropdownMenuItem >
                     <Info className='mr-2 h-5 w-5' />
-                    <Link href='/dashboard'>Documentation</Link>
+                    <Link href='/documentation'>Documentation</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem >
                     {isConnected ? (<LogOut className='mr-2 h-5 w-5' />) : (<LogIn className='mr-2 h-5 w-5' />)}
