@@ -50,7 +50,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
    return response.status(200).json({
     success : true , 
-    text1,text2,similarityResult
+    text1,
+    text2,
+    similarityResult
    })
 
   } catch (error:any) {
