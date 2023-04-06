@@ -1,7 +1,6 @@
 
 import callWithMehods from "@/libs/api-middlewars/methods";
 import { db } from "@/libs/db";
-import { openai } from "@/libs/openai";
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 import similarity from '@/helpers/cosineSimilarity' 

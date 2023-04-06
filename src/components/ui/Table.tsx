@@ -4,6 +4,7 @@ import { DataGrid, GridColumnHeaderParams, type GridColDef } from '@mui/x-data-g
 import { ApiRequest } from '@prisma/client';
 import { useTheme } from 'next-themes';
 import { createTheme, ThemeProvider } from '@mui/material';
+import Paragraph from './Paragraph';
 const columsDef: GridColDef[] = [
     {
         field: 'col1',
@@ -16,28 +17,26 @@ const columsDef: GridColDef[] = [
         }
     },
     {
-        field: 'col2', headerClassName: 'Path', width: 250
+        headerName: "Path",
+        field: 'col2', width: 250
     },
     {
-        field: 'col3', headerClassName: 'Recency', width: 250
+        field: 'col3', headerName: 'Recency', width: 250, headerClassName: ""
     },
     {
-        field: 'col4', headerClassName: 'Duration', width: 150
+        field: 'col4', headerName: 'Duration', width: 150
     },
     {
-        field: 'col5', headerClassName: 'Status', width: 150
+        field: 'col5', headerName: 'Status', width: 150
     },
 ]
 
 const column = columsDef.map(col => {
-    if (col.field === 'col1') {
-        return col
-    }
     return {
         ...col,
         renderHeader(params: GridColumnHeaderParams<any, any, any>) {
             return (
-                <strong className='font-semibold '>{params.colDef.headerName}</strong>
+                <Paragraph >{params.colDef.headerName}</Paragraph>
             )
         }
     }
@@ -66,17 +65,17 @@ const Table: FC<TableProps> = ({ userRequest }) => {
 
     }))
     return (
-       <ThemeProvider theme={theme}>
-        <DataGrid style={{backgroundColor:applicationTheme === 'light'? 'white': '#152238',fontSize:'1rem'}} pageSizeOptions={[5]} autoHeight disableRowSelectionOnClick initialState={{
-            pagination:{
-                paginationModel:{
-                    pageSize:5
+        <ThemeProvider theme={theme}>
+            <DataGrid style={{ backgroundColor: applicationTheme === 'light' ? 'white' : '#152238', fontSize: '0.9rem', fontWeight: 'lighter' }} pageSizeOptions={[5]} autoHeight disableRowSelectionOnClick initialState={{
+                pagination: {
+                    paginationModel: {
+                        pageSize: 5
+                    }
                 }
-            }
-        }} columns={column} rows={row}/>
+            }} columns={column} rows={row} />
 
 
-       </ThemeProvider>
+        </ThemeProvider>
     );
 };
 
