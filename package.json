@@ -27,6 +27,7 @@
     "date-fns": "^2.29.3",
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "framer-motion": "^10.0.1",
     "lodash": "^4.17.21",
     "lucide-react": "^0.122.0",
