@@ -45,7 +45,7 @@ export default withAuth (
         // route protecting 
         
         const token = await getToken({ req : request }) ; 
-
+   
         const isAuth = !!token ; 
 
         const isAuthPage = pathname.startsWith('/login') 

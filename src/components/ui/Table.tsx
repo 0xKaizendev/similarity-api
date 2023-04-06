@@ -17,18 +17,11 @@ const columsDef: GridColDef[] = [
         }
     },
     {
-<<<<<<< HEAD
         headerName: "Path",
         field: 'col2', width: 250
     },
     {
-        field: 'col3', headerName: 'Recency', width: 250, headerClassName: ""
-=======
-        field: 'col2', headerName: 'Path', width: 250
-    },
-    {
         field: 'col3', headerName: 'Recency', width: 250
->>>>>>> d612a74a4df628ad56b06541c62a987f76b0360c
     },
     {
         field: 'col4', headerName: 'Duration', width: 150

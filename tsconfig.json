@@ -46,6 +46,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    "/home/rozales/Personal_Projects/similarity-api/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

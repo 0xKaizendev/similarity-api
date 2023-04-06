@@ -16,6 +16,7 @@ const Dashboard =async () => {
     const apiKey = await db.apiKey.findFirst({
         where :{userId:session.user.id,enabled:true}
     })
+    
     return ( 
         <div className="max-w-7xl mx-auto mt-15">
            {apiKey? 
