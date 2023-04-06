@@ -53,7 +53,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isConnected }) => {
                 </DropdownMenuItem>
                 <DropdownMenuItem >
                     {isConnected ? (<LogOut className='mr-2 h-5 w-5' />) : (<LogIn className='mr-2 h-5 w-5' />)}
-                    {isConnected ? (<Link href='/login' onClick={signUserOut}>Sign Out</Link>) : (<Link href='/dashboard' onClick={signInWithGoogle}>Sign In</Link>)}
+                    {isConnected ? (<Link href='/dashboard' onClick={signUserOut}>Sign Out</Link>) : (<Link href='/login' onClick={signInWithGoogle}>Sign In</Link>)}
 
 
 
